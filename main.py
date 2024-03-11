@@ -3,7 +3,7 @@ import openpyxl
 from openpyxl.utils import get_column_letter
 import re
 
-path = r"D:\projects\split_data\split_data"
+path = r"D:\projects\split_data"
 os.chdir(path)  # 修改工作路径
 
 workbook = openpyxl.load_workbook('test.xlsx')
