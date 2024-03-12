@@ -7,7 +7,7 @@ class ExcelProcess(object):
 
     def __init__(self, path, filename):
         os.chdir(path)  # 修改工作路径
-        self.workbook = self.workbook = openpyxl.load_workbook(filename)
+        self.workbook = openpyxl.load_workbook(filename)
         self.max_row = None
         self.sheet = None
 
@@ -22,10 +22,26 @@ class ExcelProcess(object):
     def save_excel(self, filename):
         self.workbook.save(filename)
 
-    def write_cell(self, i, j , string):
+    def write_cell(self, i, j, string):
         cell_id = get_column_letter(j) + str(i)
         self.sheet[cell_id] = string
 
     def get_cell(self, i, j):
         cell_id = get_column_letter(j) + str(i)
         return self.sheet[cell_id].value
+
+    def write_G(self, row, string):
+        cell_id = "G" + str(row)
+        self.sheet[cell_id] = string
+
+    def write_valid_add(self, row):
+        cell_id = "H" + str(row)
+        self.sheet[cell_id] = "有效新增"
+
+    def write_interactive_add(self, row):
+        cell_id = "I" + str(row)
+        self.sheet[cell_id] = "互动新增"
+
+    def write_broadband_add(self, row):
+        cell_id = "J" + str(row)
+        self.sheet[cell_id] = "宽带新增"

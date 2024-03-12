@@ -3,7 +3,7 @@ import business as bp
 from excel_process import ExcelProcess
 
 
-path = r"D:\projects\split_data"
+path = r"D:\projects\split_data\split_data"
 filename = "test.xlsx"
 table_name = "test"
 name_pattern = "发展人[:：,，][（）\d\u4e00-\u9fa5]+"
@@ -12,7 +12,7 @@ business_pattern = "(?<=业务[:：])[\d\u4e00-\u9fa5]+(?=[,，])"
 
 excel = ExcelProcess(path, filename)
 excel.load_excel_sheet(table_name)
-for row in range(5, 10):
+for row in range(1, excel.get_max_row()+1):
 
     column = 2
     all_string = excel.get_cell(row, 1)
