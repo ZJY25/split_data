@@ -23,25 +23,35 @@ class ExcelProcess(object):
         self.workbook.save(filename)
 
     def write_cell(self, i, j, string):
-        cell_id = get_column_letter(j) + str(i)
+        if isinstance(j, int):
+            cell_id = get_column_letter(j) + str(i)
+        else:
+            cell_id = j + str(i)
         self.sheet[cell_id] = string
 
     def get_cell(self, i, j):
-        cell_id = get_column_letter(j) + str(i)
+        if isinstance(j, int):
+            cell_id = get_column_letter(j) + str(i)
+        else:
+            cell_id = j + str(i)
         return self.sheet[cell_id].value
 
     def write_G(self, row, string):
         cell_id = "G" + str(row)
         self.sheet[cell_id] = string
 
-    def write_valid_add(self, row):
+    def write_H(self, row, string):
         cell_id = "H" + str(row)
+        self.sheet[cell_id] = string
+
+    def write_valid_add(self, row):
+        cell_id = "I" + str(row)
         self.sheet[cell_id] = "有效新增"
 
     def write_interactive_add(self, row):
-        cell_id = "I" + str(row)
+        cell_id = "J" + str(row)
         self.sheet[cell_id] = "互动新增"
 
     def write_broadband_add(self, row):
-        cell_id = "J" + str(row)
+        cell_id = "K" + str(row)
         self.sheet[cell_id] = "宽带新增"
