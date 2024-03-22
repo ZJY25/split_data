@@ -14,6 +14,7 @@ net_back_key_words = ["互", "宽", "高", "有效", "标清"]
 
 all_can_key_words = ["99", "129", "169", "229"]
 
+card_type = ["全能", "卡", "副"]
 
 def judge_business_type(business_str):
     for key, value in enumerate(business_type):
@@ -30,6 +31,15 @@ def judge_ghk_type(net_back_str):
         if flag >= 0:
             temp_ghk[key] = 1
     return temp_ghk
+
+
+def judge_card(business_str):
+    result = [0, 0, 0]
+    for key, value in enumerate(card_type):
+        flag = business_str.find(value)
+        if flag >= 0:
+            result[key] = 1
+    return result
 
 
 def business_process(business_str, excel, i, j):
