@@ -35,6 +35,9 @@ def judge_ghk_type(net_back_str):
 def business_process(business_str, excel, i, j):
     b_type = judge_business_type(business_str)
     print("b_type: " + str(b_type))
+    if b_type not in range(0, 20):
+        print("识别不出来")
+        excel.write_cell(i, "F", "识别不出来了")
     if b_type == 1:
         print("回网")
         ghk = judge_ghk_type(business_str)
